@@ -35,6 +35,7 @@ object OAuthHelper {
 
   /**
     * Generates a map from a case class. supports Scala ver <2.13
+    * Thanks to contributors on https://stackoverflow.com/a/1227643/1266051
     *
     * @param cc the case class
     * @return - returns a map
