@@ -13,10 +13,6 @@ before_cache:
 
 jobs:
   include:
-    - stage: style
-      name: "Code style"
-      script: sbt scalafmtCheck
-
     - stage: test
       script: sbt test
       name: "Tests"
