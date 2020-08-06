@@ -1,4 +1,4 @@
-package org.bellare
+package io.bellare
 
 import java.util.Base64
 import javax.crypto.Mac

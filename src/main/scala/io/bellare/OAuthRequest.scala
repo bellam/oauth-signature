@@ -1,4 +1,4 @@
-package org.bellare
+package io.bellare
 
 case class OAuthRequest(
     http_method: String,

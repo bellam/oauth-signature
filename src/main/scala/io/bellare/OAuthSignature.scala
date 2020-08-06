@@ -1,4 +1,4 @@
-package org.bellare
+package io.bellare
 
 import OAuthHelper._
 

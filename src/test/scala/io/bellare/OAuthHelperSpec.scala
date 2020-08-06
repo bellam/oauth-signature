@@ -1,5 +1,5 @@
 import org.scalatest.flatspec.AnyFlatSpec
-import org.bellare.OAuthHelper
+import io.bellare.OAuthHelper
 
 class OAuthHelperSpec extends AnyFlatSpec {
 

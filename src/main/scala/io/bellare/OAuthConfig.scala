@@ -1,6 +1,6 @@
-package org.bellare
+package io.bellare
 
-import org.bellare.OAuthHelper
+import io.bellare.OAuthHelper
 
 /**
   * Configure OAuth credentials

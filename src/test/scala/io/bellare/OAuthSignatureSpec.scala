@@ -1,7 +1,7 @@
 import org.scalatest.flatspec.AnyFlatSpec
-import org.bellare.OAuthSignature
-import org.bellare.OAuthConfig
-import org.bellare.OAuthRequest
+import io.bellare.OAuthSignature
+import io.bellare.OAuthConfig
+import io.bellare.OAuthRequest
 
 class OAuthSignatureSpec extends AnyFlatSpec {
 
