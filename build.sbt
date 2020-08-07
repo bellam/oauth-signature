@@ -10,9 +10,6 @@ licenses := Seq(
   "APL2" -> url("https://www.apache.org/licenses/LICENSE-2.0.txt")
 )
 
-// disable using the Scala version in output paths and artifacts
-crossPaths := false
-
 // library dependencies
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0" % "test"
 
@@ -27,7 +24,3 @@ publishTo := sonatypePublishTo.value
 pgpPublicRing := file("ci/pubring.asc")
 pgpSecretRing := file("ci/secring.asc")
 pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toArray)
-
-// overwrite staging repos
-publishConfiguration := publishConfiguration.value.withOverwrite(true)
-publishLocalConfiguration := publishLocalConfiguration.value.withOverwrite(true)
