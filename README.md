@@ -46,7 +46,7 @@ val request = OAuthRequest(
 ## Step 3: Build OAuthSignature object with config and request objects
 
 ```scala
-    val signature = OAuthSignature(config, request)
+val signature = OAuthSignature(config, request)
 ```
 
 ## Generate oauth_signature OR entire authorization header to be passed in the authentication request
