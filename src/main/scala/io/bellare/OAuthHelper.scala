@@ -11,6 +11,7 @@ object OAuthHelper {
 
   /**
     * Generate HMAC value
+    *
     * @param str - parameterized string to be signed
     * @param signatureKey - the signature key
     * @return encrypted value hashed with signatureKey using HMAC-SHA algorithm
@@ -28,6 +29,7 @@ object OAuthHelper {
 
   /**
     * "Percent Encodes" a string. Primarily used as a URL encoder.
+    *
     * @return A percent-encoded string
     */
   def encode: String => String =
@@ -76,6 +78,7 @@ object OAuthHelper {
 
   /**
     * Get a function to read environment variable
+    *
     * @return function to get environment variable
     */
   def env: String => String =
