@@ -1,5 +1,7 @@
 # OAuth-Signature
 
+[![Build Status](https://travis-ci.org/bellam/oauth-signature.svg?branch=master)](https://travis-ci.org/bellam/oauth-signature)
+
 oauth-signature is a lightweight Scala library to generate OAuth1.0 signature using HMAC-SHA algorithm. Works well for Twitter and Flickr APIs that need OAuth1.0 authentication.
 
 ## Step 1: Configure OAuthConfig object with four OAuth parameters
