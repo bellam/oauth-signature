@@ -1,25 +1,25 @@
 language: scala
 cache:
   directories:
-  - "$HOME/.ivy2/cache"
-  - "$HOME/.sbt"
+    - "$HOME/.ivy2/cache"
+    - "$HOME/.sbt"
 before_cache:
-- rm -fv $HOME/.ivy2/.sbt.ivy.lock
-- find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
-- find $HOME/.sbt        -name "*.lock"               -print -delete
+  - rm -fv $HOME/.ivy2/.sbt.ivy.lock
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt        -name "*.lock"               -print -delete
 jobs:
   include:
-  - stage: test
-    script: sbt +test
-    name: Tests
-  - stage: deploy
-    if: tag =~ ^v
-    script: sbt +publishSigned sonatypeRelease
+    - stage: test
+      script: sbt +test
+      name: Tests
+    - stage: deploy
+      if: tag =~ ^v
+      script: sbt +publishSigned sonatypeReleaseAll
 env:
   global:
-  - secure: hB6J4VyO0/vmZlkKTFawpDkqty2ea34guOwOAudM1XydzXT5D/koXo3k4eME/UAYuW3EKMaHntcI6hnTL36O7yYPwFQYKcFYrNUUT2oY9Js0ujnwC7PjIwIN4SRbA/mL2MnNSUalncaQqNbA8WUR9e+RLcrT6S3xHkBznB47M5pYIfgleR0WIh5Ln/AL7vosoUsB/dpf2KTnVgYnBYeCXWlQrmAwSG2MwNWL0rVehv5fMcvfSMxRfk5OhMEOgfdh2gMX9zBUQaXhU0Kl3Ivlk5M7L2ebnUZx3QeKPz5bR+aSsRGOiYo988rI4AckMAwy0wX1AlVE5XDCMmsjl7XF0SBOwcyPeElGn/9F4vSysU1NGaztIgGt8jmGaGMolfVReQ1nZK0vbt29nFWjzra+eb4dCupzYB90ESrPA2lOW4Tjk/dG5YWa7JqRe520NpxwUZlU3ixyxKLc2Cu4VnzZO0gZR1T0hmhNlWWdjvm9A8Dja1pDlykecWPPidpyTyLamNGnZ/JPuSj/LBYUoEMX/vET7F0C2A+8DCMDMF2H3xVcgD+N+Gr2/NVO+R5lPyeAyt4G5jf3utcRQo+5w86l2bgR5bhwEFiNu/opoUBIsf/5fPr7yukbh+xYNvz9RDfMlAdVecoRPscpU5oDrorLWRD0fWF7DSDtWr12zwlVl/Q=
-  - secure: EJAG3Rbl+2FDqO/URgaF6fJnqJvChtVRyUSaMSneN5O2NdXQXW42DIN5e4qlRoPMKnEV8oVVzfrkYi02kycatpAZ3wb306ivYAY9mGJ8fNLZCNSzDG8WhTCPfc1yc21fOC71OE4d8XuIAIDrFaDeptNtms6k1bzbZe1cAXMgKsQ6owEQtSv2iKNUbvLkRD4ja7reacc2LoTeGJWQcttbMbAmIb/yI/prRHZPThTSki74zbc+3C0WJ7WgaqxGMJO0TuD+YJeqwoZebS8BKiifeOFf6kXO6aiNiklAmgggHf5B1Kh4GmwH0wy8uPpiSxVWejwGkZwRQK0FqGgChTwwZkLWNMXLEfPDMLn7zXKfBEjPOr7QorVmFNVYsFytxB/U9X4dQsKY14DIcuWVJ/UYkwfiUIHKCyfKsRY1SeKsxPRGURwkLBesqN74+5KiqMudNjkrRug7R9k3nCvzvI1JjUp9o09Kg48UENrjiU/ioF8GVHiBn0ctDv2blZMqq7Gz0/gSoDY4sogppnqx2HdwW0516+MDGOacQr5yBKzYzpqDVUfBNyIdSIpfHhyc+4Uq8tfy5fnKRI9/00eZE4xiXv3YFNxlqfWXlHDFDgszyhU4mTPKV3JigzPu+kMbNbRjFFBlXcUtH2hsI9/to9TzRkR02PHZQuWTtx9rawOTU2k=
-  - secure: IhiTM+WYcx1zxJaXT4wRFuc+LUM7nB0R6PuNxccXEk12v2EiERYcUAGm2KcqYUx5HkwEmfkR7No4NGHbhttYvIz6vQ0sGzhkC/802NgP9bRo4Qb6npMeS7IC8ocrktKHSrs+biiEtC3Ouxh9EiESq8gC/nVJcdL/hu8ZXYUrCZAzuoJb0zuqSSRNIXgJWq6YoV+1UgInxZQxeuYhBEDbtb7udhDIOj2pvnr+tPTkMq5muonLbgOd/fciY58Y2A0XzQtq4M7mwL2f3eJl0R9ByF0yK8HXHQKcOMouYahXIL+qxYbVcO+AtGyWB/P5RfMymz2UKiEDTH8ilJ6lPkq9wXyqPOvqpaKt8iKbyKZoGHHfVVh+W4kPpfW/7WhKYbvKVKRkV1JJJO34VeICzvs+qi9xorPvuR3Ir3UhEjr97797EAeydS2ZUlsoNUXquF56+HlnQQTF7uqTt0jBUYMVb9qC0gVok5Y3na6DwOUqJrbIYgsqvjbyoDpZax6/J6IJMu+eG2yl5vTCfVYuCMpIp6Cqd/7zrOG96Q4YuvuG7AEiXYeGklLT6VlWoV90igwVYkSuAkJiBb98+vX8OC8GEuiIJITdxjCA1UsjwixWQHtKg8pd0RTcWsAwU0JzPfXqLEpEpS7x5/BxcAabx6c7pnr9ljvtnE+slS/UDj4XBD4=
+    - secure: hB6J4VyO0/vmZlkKTFawpDkqty2ea34guOwOAudM1XydzXT5D/koXo3k4eME/UAYuW3EKMaHntcI6hnTL36O7yYPwFQYKcFYrNUUT2oY9Js0ujnwC7PjIwIN4SRbA/mL2MnNSUalncaQqNbA8WUR9e+RLcrT6S3xHkBznB47M5pYIfgleR0WIh5Ln/AL7vosoUsB/dpf2KTnVgYnBYeCXWlQrmAwSG2MwNWL0rVehv5fMcvfSMxRfk5OhMEOgfdh2gMX9zBUQaXhU0Kl3Ivlk5M7L2ebnUZx3QeKPz5bR+aSsRGOiYo988rI4AckMAwy0wX1AlVE5XDCMmsjl7XF0SBOwcyPeElGn/9F4vSysU1NGaztIgGt8jmGaGMolfVReQ1nZK0vbt29nFWjzra+eb4dCupzYB90ESrPA2lOW4Tjk/dG5YWa7JqRe520NpxwUZlU3ixyxKLc2Cu4VnzZO0gZR1T0hmhNlWWdjvm9A8Dja1pDlykecWPPidpyTyLamNGnZ/JPuSj/LBYUoEMX/vET7F0C2A+8DCMDMF2H3xVcgD+N+Gr2/NVO+R5lPyeAyt4G5jf3utcRQo+5w86l2bgR5bhwEFiNu/opoUBIsf/5fPr7yukbh+xYNvz9RDfMlAdVecoRPscpU5oDrorLWRD0fWF7DSDtWr12zwlVl/Q=
+    - secure: EJAG3Rbl+2FDqO/URgaF6fJnqJvChtVRyUSaMSneN5O2NdXQXW42DIN5e4qlRoPMKnEV8oVVzfrkYi02kycatpAZ3wb306ivYAY9mGJ8fNLZCNSzDG8WhTCPfc1yc21fOC71OE4d8XuIAIDrFaDeptNtms6k1bzbZe1cAXMgKsQ6owEQtSv2iKNUbvLkRD4ja7reacc2LoTeGJWQcttbMbAmIb/yI/prRHZPThTSki74zbc+3C0WJ7WgaqxGMJO0TuD+YJeqwoZebS8BKiifeOFf6kXO6aiNiklAmgggHf5B1Kh4GmwH0wy8uPpiSxVWejwGkZwRQK0FqGgChTwwZkLWNMXLEfPDMLn7zXKfBEjPOr7QorVmFNVYsFytxB/U9X4dQsKY14DIcuWVJ/UYkwfiUIHKCyfKsRY1SeKsxPRGURwkLBesqN74+5KiqMudNjkrRug7R9k3nCvzvI1JjUp9o09Kg48UENrjiU/ioF8GVHiBn0ctDv2blZMqq7Gz0/gSoDY4sogppnqx2HdwW0516+MDGOacQr5yBKzYzpqDVUfBNyIdSIpfHhyc+4Uq8tfy5fnKRI9/00eZE4xiXv3YFNxlqfWXlHDFDgszyhU4mTPKV3JigzPu+kMbNbRjFFBlXcUtH2hsI9/to9TzRkR02PHZQuWTtx9rawOTU2k=
+    - secure: IhiTM+WYcx1zxJaXT4wRFuc+LUM7nB0R6PuNxccXEk12v2EiERYcUAGm2KcqYUx5HkwEmfkR7No4NGHbhttYvIz6vQ0sGzhkC/802NgP9bRo4Qb6npMeS7IC8ocrktKHSrs+biiEtC3Ouxh9EiESq8gC/nVJcdL/hu8ZXYUrCZAzuoJb0zuqSSRNIXgJWq6YoV+1UgInxZQxeuYhBEDbtb7udhDIOj2pvnr+tPTkMq5muonLbgOd/fciY58Y2A0XzQtq4M7mwL2f3eJl0R9ByF0yK8HXHQKcOMouYahXIL+qxYbVcO+AtGyWB/P5RfMymz2UKiEDTH8ilJ6lPkq9wXyqPOvqpaKt8iKbyKZoGHHfVVh+W4kPpfW/7WhKYbvKVKRkV1JJJO34VeICzvs+qi9xorPvuR3Ir3UhEjr97797EAeydS2ZUlsoNUXquF56+HlnQQTF7uqTt0jBUYMVb9qC0gVok5Y3na6DwOUqJrbIYgsqvjbyoDpZax6/J6IJMu+eG2yl5vTCfVYuCMpIp6Cqd/7zrOG96Q4YuvuG7AEiXYeGklLT6VlWoV90igwVYkSuAkJiBb98+vX8OC8GEuiIJITdxjCA1UsjwixWQHtKg8pd0RTcWsAwU0JzPfXqLEpEpS7x5/BxcAabx6c7pnr9ljvtnE+slS/UDj4XBD4=
 before_install:
-- openssl aes-256-cbc -K $encrypted_e60dfa0a2678_key -iv $encrypted_e60dfa0a2678_iv
-  -in ci/secring.asc.enc -out ci/secring.asc -d
+  - openssl aes-256-cbc -K $encrypted_e60dfa0a2678_key -iv $encrypted_e60dfa0a2678_iv
+    -in ci/secring.asc.enc -out ci/secring.asc -d

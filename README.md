@@ -10,7 +10,7 @@ oauth-signature is a lightweight Scala library to generate OAuth1.0 signature us
 Use the following import to get started:
 
 ```scala
-libraryDependencies += "com.github.bellam" % "oauth-signature_2.13" % "0.1.0"
+libraryDependencies += "com.github.bellam" % "oauth-signature" % "0.1.2"
 ```
 
 ## Step 1: Configure OAuthConfig object with four OAuth parameters
