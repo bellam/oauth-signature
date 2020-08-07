@@ -1,8 +1,17 @@
 # OAuth-Signature
 
 [![Build Status](https://travis-ci.org/bellam/oauth-signature.svg?branch=master)](https://travis-ci.org/bellam/oauth-signature)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.bellam/oauth-signature_2.13.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.bellam%22%20AND%20a:%22oauth-signature_2.13%22)
 
 oauth-signature is a lightweight Scala library to generate OAuth1.0 signature using HMAC-SHA algorithm. Works well for Twitter and Flickr APIs that need OAuth1.0 authentication.
+
+## Getting Started
+
+Use the following import to get started:
+
+```
+libraryDependencies += "com.github.bellam" % "oauth-signature_2.13" % "0.1.0"
+```
 
 ## Step 1: Configure OAuthConfig object with four OAuth parameters
 
