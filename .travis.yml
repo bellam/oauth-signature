@@ -1,18 +1,25 @@
 language: scala
-
-# These directories are cached at the end of the build
 cache:
   directories:
-    - $HOME/.ivy2/cache
-    - $HOME/.sbt
+    - "$HOME/.ivy2/cache"
+    - "$HOME/.sbt"
 before_cache:
-  # Cleanup the cached directories to avoid unnecessary cache updates
   - rm -fv $HOME/.ivy2/.sbt.ivy.lock
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
   - find $HOME/.sbt        -name "*.lock"               -print -delete
-
 jobs:
   include:
     - stage: test
-      script: sbt test
-      name: "Tests"
+      script: sbt +test
+      name: Tests
+    - stage: deploy
+      if: tag =~ ^v
+      script: sbt +publishSigned sonatypeRelease
+env:
+  global:
+    - secure: Spmy93ZTwrPtZZDC3uVsKlhSuW5xdkQ5pRYNl0Umd1gtNrtltY4z0e4HgS+Utgmsi/UA78NkdOy4H/IUYyLqhLppZbQkgXVjmL4Ww6Yh1sD0mkosPHaGm+ioNa9BV8cXCJx//3NRa4fwIX/W8ULXb6YI6MG1SUs/hs/dldt9GEQd4/WFIQgeiO7odpHDcsW9h+4KHn89zlFoFh2wIVDbwEsXaGNobYISz3kDjpMwThCca8ghguR7cqGpmpS9jJFljpoXq1VJZz6Tqef3kJuJqbRgAta1SQFvddlR+P4UftyXQPfM+YE1GLJKT266yVJFl5mai/MwtNijynQnxjMjK5IJnwxX7wzZEaRFOJGJnlTuh+dgWtczw/HpO8emKoZHU8YQYlhm3VNfD4JJezuV95PYmBz82xNWll/Z5ndUsDTxceSS7iIrA7hInUE7h0Rpkm2bQp7kBC1anpaqGn9EMNbS4Xcxzil0fN+ZUc2qzkLc6ZEXfs4p/Fe7xJ2k9x2fE/9hcpbRCHOon0s6gtujbrTddoGzunyglAQDS3KF3iiVcwrUeG9Ci6zru+ozr0VV9rUH7gWjJjtNy7o7zB/wccdo4Y5FMfMsbcJqKWMO1wOipR6s6n+TzF26XwTGIBPm6vAicpDJWgGg6W9SbGqc//oPC1iRHTep9Z1AsSFYarA=
+    - secure: ZZ8nMiA4PeQCteo7+0aBBOBqU+b2sxVbuF6NedJBFtd4qIL1V+ewtU7j1DSGDcXl+jm9PkyxNV83NZuCGaIa7fa2LwF5NeeQXKM3zTeR+ECNMAMbgiGl0ZwHksSUA+8QE7p7VYtERS7JzRq58qQGewO2EQC5jbVrIBqB9PZnxc/45Nhglfil35dfEhKPPHZY7dQMPbw2S4+1v9/GayOQO3N3cTMMeDNeCpqeOgJCBbHehTEh/31VR44lYjmzu04VaFTq45kC38t8s1Bzsa9nX7GMPpjK/Xky5fs3V3JEa3GWEruRqw7bgUND1jAosSUg4wEjNqbpdswo11etJZx8BmL9gNX/qT/47EQcwmo1b4Ht8Ox8dcOC1exECkmxWBe4K3k430fjstkZYrmPS1I5Y1qTt5WXRmHlZVoFDJC4eHg+yGJ6K7hKL1hVXp+fhwBuFlZxgQbMAOPGUeTQ45Pt3ZMemVUvM4F7z+HCLuFn5iY57fPL5bagl0U561vnQhOFchYROCIs/mG9EIkHAc2oBPNK4TXqg3Es+4rSF7ERD43Tg8GMk1MuonBJdjRIEyjsfnnpqvaWXWMHcZLFIC6nLE+YSjnVzF8gdBiSgrdAZTMKLYszLJcLwurVaa6KLZxr/aXQQDiBtTVQhRiFXAEyPpeRzRNKp0F/Bkj/gEV3Z1M=
+    - secure: SdY0J+LL2aBYNQa90D+H4Eo9jtzUdXdn/KEfCAa7Ln2p1r/cCTF8mM5/RVXOfKRroD+GQQ7TCMnNjjHuvxHMsAM7hoAcH6fpTD02zI5aE5ZTCBBxP36n2qF8YdWksbPeXwKA9CoWeg0Y2Nu3C/ymR5p7eZmkcsev+WS95eP8dlcU1Q6mvE9+ElOaYnTaJAebHV/fRaNwMpHIim2XBSofl19xS3/HWxeBMzOXYmKty9nv6o+b7Scp3/oafSDOs8PCzpkDs28BdDzis7zWjY8U+l4J1jPRFPMU/CCutQKQIZbNFPTpzFFf5rRsUUeXwKux7M75aLseLWC/53NOI+QWNX/L+cYHTWOMkv7CNXuATZOZ6954OdZpBBjSuSJs1AGjMuRJ68d7uNc3HCS6qv7KCTK/z56jE0yXb7FAfT/fpZdZW54GnNqIdPwZB/XnjPfKu2Nig3wIyfoJoVoWR4fA8GHcSpIjD9tKM5P7xnYHA7bfMzVKRao2mEZi/kqnL5DDjEBu1q6DU41EjHmhTIcGh+9ANMDHbZOpySfW6D/n8xY9Exo9lzCt7PO+DfJRlpBzYe1sjUkzd4Kl68Nd2gX8bI0hlu6WbazK3XfS/1q3wSXWHMmM9eX6xbMN0cxhgDKtc6r04mHeM0kmSsJ+QpFC2LhJjkJGvPd9nDJS0oz+3Mg=
+before_install:
+  - openssl aes-256-cbc -K $encrypted_e60dfa0a2678_key -iv $encrypted_e60dfa0a2678_iv
+    -in ci/secring.asc.enc -out ci/secring.asc -d

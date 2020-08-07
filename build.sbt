@@ -1,4 +1,5 @@
-scalaVersion := "2.13.1"
+crossScalaVersions := Seq("2.13.1", "2.12.8", "2.11.12")
+scalaVersion := crossScalaVersions.value.head
 
 name := "oauth-signature"
 organization := "com.github.bellam"
@@ -15,3 +16,7 @@ sonatypeProjectHosting := Some(
 publishTo := sonatypePublishTo.value
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0" % "test"
+
+pgpPublicRing := file("ci/pubring.asc")
+pgpSecretRing := file("ci/secring.asc")
+pgpPassphrase := sys.env.get("PGP_PASSPHRASE").map(_.toArray)

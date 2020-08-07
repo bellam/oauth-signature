@@ -1,7 +1,9 @@
 .metals
 .bloop
-.scalafmt.conf
-.DS_Store
 .idea
 .vscode
+.DS_Store
+
 target/
+
+ci/secring.asc
