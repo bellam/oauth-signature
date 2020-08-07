@@ -9,7 +9,7 @@ oauth-signature is a lightweight Scala library to generate OAuth1.0 signature us
 
 Use the following import to get started:
 
-```
+```scala
 libraryDependencies += "com.github.bellam" % "oauth-signature_2.13" % "0.1.0"
 ```
 
@@ -43,7 +43,7 @@ val request = OAuthRequest(
       )
 ```
 
-## Step 3: Build OAuthSignature object with the config and request objects
+## Step 3: Build OAuthSignature object with config and request objects
 
 ```scala
     val signature = OAuthSignature(config, request)
@@ -59,6 +59,6 @@ scala> signature.getSignedAuthorizationHeader
 res15: String = "OAuth oauth_consumer_key=\"1234\", oauth_nonce=\"1234\", oauth_signature=\"bbr4AkCDTrvw6FG0h605oHtX8tM%3D\", oauth_signature_method=\"HMAC-SHA1\", oauth_timestamp=\"1234\", oauth_token=\"1234\", oauth_version=\"1.0\""
 ```
 
-This library has been very useful for me with some ammonite scripts that I wrote to analyse twitter hashtags via Twitter Standard API.
+This library has been very useful for me with some ammonite scripts I wrote to analyse twitter hashtags via Twitter's Standard API.
 
 Thank you.
