@@ -9,6 +9,8 @@ before_cache:
   - find $HOME/.sbt        -name "*.lock"               -print -delete
 jobs:
   include:
+    - stage: clean
+      script: sbt +clean
     - stage: test
       script: sbt +test
       name: Tests
